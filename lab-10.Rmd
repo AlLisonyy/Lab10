@@ -1,13 +1,14 @@
 ---
 title: "Lab 10 - Grading the professor, Pt. 1"
-author: "Insert your name here"
-date: "Insert date here"
+author: "Allison Li"
+date: "04202025"
 output: github_document
 ---
 
 ## Load Packages and Data
 
 ```{r load-packages, message=FALSE, warning=FALSE}
+##install.packages("openintro")
 library(tidyverse) 
 library(tidymodels)
 library(openintro)
@@ -15,23 +16,32 @@ library(openintro)
 
 ## Exercise 1
 
-*Provide your answer here.*  
-Add code chunks as needed. Don't forget to label your code chunks.
-
-
 ```{r exercise1_code}
-# Add your R code here
+glimpse(evals)
+
+##Distribution:
+ggplot(evals, aes(x = score)) +
+  geom_histogram(
+    binwidth = 0.5, fill = "pink", color = "lightblue") +
+  labs(title = "Distribution of Course Evaluation Scores", x = "Score", y = "Count")
 ```
+
+This is a left skewed distribution, indicating that most students' average professor evaluation scores were relatively good (4-5, excellent). This is what I expected since I believe most professors are good at teaching classes, while very little students indicating neutral or negative attitudes towards their professions. 
 
 ## Exercise 2
 
-*Provide your answer here.*  
-Add code chunks as needed.
-
 ```{r exercise2_code}
-# Add your R code here
+
+ggplot(evals, aes(x=bty_avg, y=score, color = "pink")) + 
+  geom_point(alpha = .6) +
+  labs(
+    title = "Scatterplot of Professor Evaluation Score vs. Beauty Rating",
+    x = "Average Beauty Rating",
+    y = "Course Evaluation Score"
+  )
 ```
 
+According to the graph, most dotes clustered on lower average beauty rating and higher course evaluation scores. 
 ## Additional Exercises
 
 *Repeat the format above for additional exercises.*
